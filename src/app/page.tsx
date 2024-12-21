@@ -1,101 +1,150 @@
-import Image from "next/image";
+import React from "react";
 
-export default function Home() {
+const QASection = () => {
+  const questions = [
+    {
+      question: "Що таке Bridge to Beat?",
+      answer:
+        "Bridge to Beat — це онлайн-платформа для музикантів та продюсерів, створена для того, щоб спростити процес пошуку ідеальних партнерів для спільної роботи.",
+    },
+    {
+      question: "Як створити обліковий запис?",
+      answer:
+        "Перейдіть на сторінку реєстрації, заповніть необхідну інформацію та підтвердьте електронну пошту.",
+    },
+    {
+      question: "Як працює система рейтингів і відгуків?",
+      answer:
+        "Система рейтингів дозволяє оцінювати інших користувачів та залишати відгуки для підвищення довіри.",
+    },
+    {
+      question: "Як повідомити про проблему або отримати підтримку?",
+      answer:
+        "Звертайтеся до служби підтримки через форму зворотного зв'язку або надішліть листа на електронну пошту.",
+    },
+    {
+      question: "Як користуватися пошуком?",
+      answer: "Використовуйте пошуковий рядок, щоб знайти потрібного музиканта або продюсера.",
+    },
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div
+      style={{
+        minHeight: "100vh",
+        backgroundColor: "black",
+        color: "white",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        padding: "20px",
+      }}
+    >
+      {/* Заголовок */}
+      <h1 style={{ fontSize: "32px", fontWeight: "bold", marginBottom: "20px", textAlign: "center" }}>
+        Q&A (Питання та Відповіді)
+      </h1>
+      
+      {/* Основной контейнер */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr", // Равномерные колонки
+          gap: "20px",
+          maxWidth: "1200px",
+          width: "100%",
+        }}
+      >
+        {/* Левая карточка */}
+        <details
+          style={{
+            background: "linear-gradient(to right, #1d4ed8, #1e3a8a)",
+            color: "white",
+            borderRadius: "8px",
+            padding: "20px",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            cursor: "pointer",
+            gridColumn: "1 / span 1", // Остается в первой колонке
+            gridRow: "span 3", // Занимает высоту трех карточек
+          }}
+        >
+          <summary style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "10px" }}>
+            {questions[0].question}
+          </summary>
+          <p style={{ fontSize: "14px" }}>{questions[0].answer}</p>
+        </details>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        {/* Правая колонка с тремя карточками в столбик */}
+        {questions.slice(1, 4).map((item, index) => (
+          <details
+            key={index}
+            style={{
+              background: "linear-gradient(to right, #1d4ed8, #1e3a8a)",
+              color: "white",
+              borderRadius: "8px",
+              padding: "20px",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+              cursor: "pointer",
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <summary style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "10px" }}>
+              {item.question}
+            </summary>
+            <p style={{ fontSize: "14px" }}>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+
+      {/* Последняя карточка внизу */}
+      <div style={{ marginTop: "20px", width: "100%", display: "flex", justifyContent: "center" }}>
+        <details
+          style={{
+            background: "linear-gradient(to right, #1d4ed8, #1e3a8a)",
+            color: "white",
+            borderRadius: "8px",
+            padding: "20px",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            maxWidth: "600px",
+            width: "100%",
+            cursor: "pointer",
+          }}
+        >
+          <summary style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "10px" }}>
+            {questions[4].question}
+          </summary>
+          <p style={{ fontSize: "14px" }}>{questions[4].answer}</p>
+        </details>
+      </div>
+
+      {/* Нижний футер */}
+      <footer
+        style={{
+          marginTop: "40px",
+          width: "100%",
+          maxWidth: "1200px",
+          borderTop: "1px solid #4b5563",
+          padding: "20px 10px",
+          textAlign: "center",
+          fontSize: "14px",
+          color: "#9ca3af",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "10px",
+          }}
+        >
+          <p>Bridge to Beat — Незамінний сайт для музикантів та продюсерів.</p>
+          <p>Тех. підтримка: +0000000000</p>
+          <p>© 2024 Bridge to Beat</p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
       </footer>
     </div>
   );
-}
+};
+
+export default QASection;
