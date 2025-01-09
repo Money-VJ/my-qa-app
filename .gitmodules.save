@@ -1,0 +1,8 @@
+git submodule update --init --recursive
+
+
+git add .gitmodules
+git commit -m "Add submodule b2b-web with correct URL"
+git push origin main
+
+
